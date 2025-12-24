@@ -17,6 +17,8 @@ import { MaterialsModule } from './materials/materials.module';
 import { TemplatesModule } from './templates/templates.module';
 import { TemplateItemsModule } from './template_items/template_items.module';
 import { OrdersModule } from './orders/orders.module';
+import { PhotosModule } from './photos/photos.module';
+import { OrderMaterialsModule } from './order_materials/order_materials.module';
 
 
 
@@ -41,6 +43,8 @@ import { OrdersModule } from './orders/orders.module';
     TemplatesModule,
     TemplateItemsModule,
     OrdersModule,
+    PhotosModule,
+    OrderMaterialsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
