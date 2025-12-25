@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ZippersService } from './zippers.service';
 import { CreateZipperDto } from './dto/create-zipper.dto';
 import { UpdateZipperDto } from './dto/update-zipper.dto';

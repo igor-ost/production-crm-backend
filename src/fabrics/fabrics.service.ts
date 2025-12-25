@@ -7,7 +7,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class FabricsService {
-  constructor(@InjectRepository(FabricEntity) private readonly fabricsRepository: Repository<FabricEntity>){}
+  constructor(
+    @InjectRepository(FabricEntity)
+    private readonly fabricsRepository: Repository<FabricEntity>,
+  ) {}
 
   async create(createFabricsDto: CreateFabricDto) {
     const fabric = await this.fabricsRepository.create(createFabricsDto);
@@ -16,32 +19,36 @@ export class FabricsService {
 
   async findAll(): Promise<FabricEntity[]> {
     return await this.fabricsRepository.find({
-      order:{
-        createdAt: "ASC"
-      }
+      order: {
+        createdAt: 'ASC',
+      },
     });
   }
 
   async findOne(id: string): Promise<FabricEntity> {
-    const fabric = await this.fabricsRepository.findOne({where: {
-      id: id
-    }})
-    if(!fabric){
+    const fabric = await this.fabricsRepository.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (!fabric) {
       throw new NotFoundException();
     }
     return fabric;
   }
 
-
-  async update(id: string, updateFabricsDto: UpdateFabricDto): Promise<FabricEntity> {
+  async update(
+    id: string,
+    updateFabricsDto: UpdateFabricDto,
+  ): Promise<FabricEntity> {
     const fabric = await this.findOne(id);
-    Object.assign(fabric,updateFabricsDto) 
+    Object.assign(fabric, updateFabricsDto);
     return await this.fabricsRepository.save(fabric);
   }
-  
-  async remove(id: string): Promise<{status: boolean}> {
-      const fabric = await this.findOne(id)
-      await this.fabricsRepository.remove(fabric);
-      return {status: true};
+
+  async remove(id: string): Promise<{ status: boolean }> {
+    const fabric = await this.findOne(id);
+    await this.fabricsRepository.remove(fabric);
+    return { status: true };
   }
 }

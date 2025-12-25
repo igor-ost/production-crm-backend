@@ -3,9 +3,9 @@ import { CreateTemplateDto } from './create-template.dto';
 import { IsString } from 'class-validator';
 
 export class UpdateTemplateDto extends PartialType(CreateTemplateDto) {
-        @IsString()
-        name:string | undefined;
-        
-        @IsString()
-        description:string | undefined;
+  @IsString()
+  name: string | undefined;
+
+  @IsString()
+  description: string | undefined;
 }

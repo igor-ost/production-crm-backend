@@ -8,6 +8,6 @@ import { ButtonsEntity } from './entities/buttons.entity';
   imports: [TypeOrmModule.forFeature([ButtonsEntity])],
   controllers: [ButtonsController],
   providers: [ButtonsService],
-  exports: [ButtonsService]
+  exports: [ButtonsService],
 })
 export class ButtonsModule {}

@@ -1,25 +1,31 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity("accessories")
+@Entity('accessories')
 export class AccessoriesEntity {
-    @PrimaryGeneratedColumn("uuid")
-    id: string
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column({type:"varchar",length:40})
-    name: string
+  @Column({ type: 'varchar', length: 40 })
+  name: string;
 
-    @Column({type:"varchar",length:10})
-    unit: string
+  @Column({ type: 'varchar', length: 10 })
+  unit: string;
 
-    @Column({type:"int"})
-    price: number
+  @Column({ type: 'int' })
+  price: number;
 
-    @Column({type:"int"})
-    qty: number
+  @Column({ type: 'int' })
+  qty: number;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

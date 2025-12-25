@@ -19,8 +19,9 @@ import { TemplateItemsModule } from './template_items/template_items.module';
 import { OrdersModule } from './orders/orders.module';
 import { PhotosModule } from './photos/photos.module';
 import { OrderMaterialsModule } from './order_materials/order_materials.module';
-
-
+import { JournalModule } from './journal/journal.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { OrderMaterialsModule } from './order_materials/order_materials.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: getTypeORMConfig,
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
     UserModule,
     AuthModule,
@@ -45,6 +46,11 @@ import { OrderMaterialsModule } from './order_materials/order_materials.module';
     OrdersModule,
     PhotosModule,
     OrderMaterialsModule,
+    JournalModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

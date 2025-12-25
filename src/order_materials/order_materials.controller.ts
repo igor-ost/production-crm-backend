@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { OrderMaterialsService } from './order_materials.service';
 import { CreateOrderMaterialDto } from './dto/create-order_material.dto';
 import { UpdateOrderMaterialDto } from './dto/update-order_material.dto';
@@ -12,9 +20,12 @@ export class OrderMaterialsController {
     return this.orderMaterialsService.create(createOrderMaterialDto);
   }
 
-  @Post(":id")
-  creat_many(@Param('id') id: string,@Body() createOrderMaterialDto: CreateOrderMaterialDto[]) {
-    return this.orderMaterialsService.create_many(id,createOrderMaterialDto);
+  @Post(':id')
+  creat_many(
+    @Param('id') id: string,
+    @Body() createOrderMaterialDto: CreateOrderMaterialDto[],
+  ) {
+    return this.orderMaterialsService.create_many(id, createOrderMaterialDto);
   }
 
   @Get()
@@ -28,7 +39,10 @@ export class OrderMaterialsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOrderMaterialDto: UpdateOrderMaterialDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateOrderMaterialDto: UpdateOrderMaterialDto,
+  ) {
     return this.orderMaterialsService.update(id, updateOrderMaterialDto);
   }
 

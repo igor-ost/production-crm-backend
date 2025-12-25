@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FabricsService } from './fabrics.service';
 import { CreateFabricDto } from './dto/create-fabric.dto';
 import { UpdateFabricDto } from './dto/update-fabric.dto';

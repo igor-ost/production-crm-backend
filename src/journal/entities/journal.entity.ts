@@ -1,4 +1,5 @@
 import { OrderEntity } from 'src/orders/entities/order.entity';
+import { UserEntity } from 'src/user/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
@@ -9,31 +10,28 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('order-materials')
-export class OrderMaterialEntity {
+@Entity('journal')
+export class JournalEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'material_id', type: 'uuid' })
-  material_id: string;
+  @Column()
+  type: string;
 
-  @Column({ name: 'material_type' })
-  material_type:
-    | 'accessories'
-    | 'buttons'
-    | 'zippers'
-    | 'fabrics'
-    | 'velcro'
-    | 'threads';
+  @Column()
+  quantity: number;
 
-  @ManyToOne(() => OrderEntity, (order) => order.materials, {
+  @ManyToOne(() => OrderEntity, (order) => order.photos, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'order_id' })
   order: OrderEntity;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @ManyToOne(() => UserEntity, (user) => user.journal, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'user_id' })
+  user: UserEntity;
 
   @CreateDateColumn()
   createdAt: Date;

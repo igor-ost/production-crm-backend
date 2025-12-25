@@ -1,55 +1,68 @@
-import { CustomerEntity } from "src/customer/entities/customer.entity";
-import { OrderMaterialEntity } from "src/order_materials/entities/order_material.entity";
-import { PhotoEntity } from "src/photos/entities/photo.entity";
-import { TemplateEntity } from "src/templates/entities/template.entity";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CustomerEntity } from 'src/customer/entities/customer.entity';
+import { JournalEntity } from 'src/journal/entities/journal.entity';
+import { OrderMaterialEntity } from 'src/order_materials/entities/order_material.entity';
+import { PhotoEntity } from 'src/photos/entities/photo.entity';
+import { TemplateEntity } from 'src/templates/entities/template.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity("orders")
+@Entity('orders')
 export class OrderEntity {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    order_number: string
+  @Column()
+  order_number: string;
 
-    @ManyToOne(() => CustomerEntity, { eager: false, onDelete: "RESTRICT" })
-    @JoinColumn({ name: "customer_id" })
-    customer: CustomerEntity;
+  @ManyToOne(() => CustomerEntity, { eager: false, onDelete: 'RESTRICT' })
+  @JoinColumn({ name: 'customer_id' })
+  customer: CustomerEntity;
 
-    @ManyToOne(() => TemplateEntity, { eager: false, onDelete: "RESTRICT" })
-    @JoinColumn({ name: "template_id" })
-    template: TemplateEntity;
+  @ManyToOne(() => TemplateEntity, { eager: false, onDelete: 'RESTRICT' })
+  @JoinColumn({ name: 'template_id' })
+  template: TemplateEntity;
 
-    @OneToMany(() => OrderMaterialEntity, material => material.order)
-    materials: OrderMaterialEntity[];
+  @OneToMany(() => OrderMaterialEntity, (material) => material.order)
+  materials: OrderMaterialEntity[];
 
-    @OneToMany(() => PhotoEntity, photo => photo.order)
-    photos: PhotoEntity[];
+  @OneToMany(() => PhotoEntity, (photo) => photo.order)
+  photos: PhotoEntity[];
 
-    @Column()
-    size: string
+  @OneToMany(() => JournalEntity, (journal) => journal.order)
+  journal: JournalEntity[];
 
-    @Column()
-    status: string
+  @Column()
+  size: string;
 
-    @Column("decimal")
-    sewing_price: number;
+  @Column()
+  status: string;
 
-    @Column("decimal")
-    cutting_price: number;
+  @Column('decimal')
+  sewing_price: number;
 
-    @Column()
-    quantity: number;
+  @Column('decimal')
+  cutting_price: number;
 
-    @Column()
-    buttons: number;
+  @Column()
+  quantity: number;
 
-    @Column({ type: "text", nullable: true })
-    notes: string;
+  @Column()
+  buttons: number;
 
-    @CreateDateColumn()
-    createdAt: Date;
-        
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @Column({ type: 'text', nullable: true })
+  notes: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

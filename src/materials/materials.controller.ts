@@ -6,6 +6,6 @@ export class MaterialsController {
   constructor(private readonly materialsService: MaterialsService) {}
   @Get()
   async findAll() {
-        return this.materialsService.findAll();
+    return this.materialsService.findAll();
   }
 }

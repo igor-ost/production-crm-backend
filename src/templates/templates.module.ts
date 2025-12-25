@@ -8,6 +8,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [TypeOrmModule.forFeature([TemplateEntity])],
   controllers: [TemplatesController],
   providers: [TemplatesService],
-  exports:[TemplatesService]
+  exports: [TemplatesService],
 })
 export class TemplatesModule {}

@@ -1,28 +1,34 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity("buttons")
+@Entity('buttons')
 export class ButtonsEntity {
-    @PrimaryGeneratedColumn("uuid")
-    id: string
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column({type:"varchar",length:40})
-    color: string
+  @Column({ type: 'varchar', length: 40 })
+  color: string;
 
-    @Column({type:"varchar",length:40})
-    type: string
+  @Column({ type: 'varchar', length: 40 })
+  type: string;
 
-    @Column({type:"varchar",length:10})
-    unit: string
+  @Column({ type: 'varchar', length: 10 })
+  unit: string;
 
-    @Column({type:"int"})
-    price: number
+  @Column({ type: 'int' })
+  price: number;
 
-    @Column({type:"int"})
-    qty: number
+  @Column({ type: 'int' })
+  qty: number;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

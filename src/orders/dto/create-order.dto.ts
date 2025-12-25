@@ -1,7 +1,13 @@
-import { IsUUID, IsString, IsNumber, IsOptional, IsInt, Min } from "class-validator";
+import {
+  IsUUID,
+  IsString,
+  IsNumber,
+  IsOptional,
+  IsInt,
+  Min,
+} from 'class-validator';
 
 export class CreateOrderDto {
-
   @IsUUID()
   customer_id: string;
 

@@ -6,7 +6,7 @@ import { TemplatesModule } from 'src/templates/templates.module';
 import { TemplateItemEntity } from './entities/template_item.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TemplateItemEntity]),TemplatesModule],
+  imports: [TypeOrmModule.forFeature([TemplateItemEntity]), TemplatesModule],
   controllers: [TemplateItemsController],
   providers: [TemplateItemsService],
 })

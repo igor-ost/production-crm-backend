@@ -9,7 +9,14 @@ import { VelcroModule } from 'src/velcro/velcro.module';
 import { ZippersModule } from 'src/zippers/zippers.module';
 
 @Module({
-  imports: [AccessoriesModule,ButtonsModule,FabricsModule,ThreadsModule,VelcroModule,ZippersModule],
+  imports: [
+    AccessoriesModule,
+    ButtonsModule,
+    FabricsModule,
+    ThreadsModule,
+    VelcroModule,
+    ZippersModule,
+  ],
   controllers: [MaterialsController],
   providers: [MaterialsService],
 })

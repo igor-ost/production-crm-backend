@@ -7,7 +7,10 @@ import { CreateAccessoriesDto } from './dto/create-accessories.dto';
 
 @Injectable()
 export class AccessoriesService {
-  constructor(@InjectRepository(AccessoriesEntity) private readonly accessoriesRepository: Repository<AccessoriesEntity>){}
+  constructor(
+    @InjectRepository(AccessoriesEntity)
+    private readonly accessoriesRepository: Repository<AccessoriesEntity>,
+  ) {}
 
   async create(createAccessoriesDto: CreateAccessoriesDto) {
     const accessories = await this.accessoriesRepository.create(createAccessoriesDto);
@@ -16,32 +19,36 @@ export class AccessoriesService {
 
   async findAll(): Promise<AccessoriesEntity[]> {
     return await this.accessoriesRepository.find({
-      order:{
-        createdAt: "ASC"
-      }
+      order: {
+        createdAt: 'ASC',
+      },
     });
   }
 
   async findOne(id: string): Promise<AccessoriesEntity> {
-    const accessories = await this.accessoriesRepository.findOne({where: {
-      id: id
-    }})
-    if(!accessories){
+    const accessories = await this.accessoriesRepository.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (!accessories) {
       throw new NotFoundException();
     }
     return accessories;
   }
 
-
-  async update(id: string, updateAccessoriesDto: UpdateAccessoriesDto): Promise<AccessoriesEntity> {
+  async update(
+    id: string,
+    updateAccessoriesDto: UpdateAccessoriesDto,
+  ): Promise<AccessoriesEntity> {
     const accessories = await this.findOne(id);
-    Object.assign(accessories,updateAccessoriesDto) 
+    Object.assign(accessories, updateAccessoriesDto);
     return await this.accessoriesRepository.save(accessories);
   }
-  
-  async remove(id: string): Promise<{status: boolean}> {
-      const accessories = await this.findOne(id)
-      await this.accessoriesRepository.remove(accessories);
-      return {status: true};
+
+  async remove(id: string): Promise<{ status: boolean }> {
+    const accessories = await this.findOne(id);
+    await this.accessoriesRepository.remove(accessories);
+    return { status: true };
   }
 }

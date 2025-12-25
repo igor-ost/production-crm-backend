@@ -1,25 +1,26 @@
-import { IsEnum, IsNotEmpty, IsString, MinLength } from "class-validator";
+import { IsEnum, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export enum UserRole {
-  MANAGER = "manager",
-  ADMIN = "admin",
-  TECHNOLOGIST = "technologist",
-  ACCOUNTANT = "accountant",
-  SEAMSTRESS = "seamstress",
-  CUTTER = "cutter",
+  MANAGER = 'manager',
+  ADMIN = 'admin',
+  TECHNOLOGIST = 'technologist',
+  ACCOUNTANT = 'accountant',
+  SEAMSTRESS = 'seamstress',
+  CUTTER = 'cutter',
+  BUTTONS = 'buttons',
 }
 
 export class CreateUserDto {
-    @IsString()
-    @IsNotEmpty()
-    @MinLength(4)
-    login: string;
-    
-    @IsNotEmpty()
-    @MinLength(8)
-    password: string;
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(4)
+  login: string;
 
-    @IsNotEmpty()
-    @IsEnum(UserRole,{message:"Не допустимое значение роли."})
-    role: UserRole
+  @IsNotEmpty()
+  @MinLength(8)
+  password: string;
+
+  @IsNotEmpty()
+  @IsEnum(UserRole, { message: 'Не допустимое значение роли.' })
+  role: UserRole;
 }

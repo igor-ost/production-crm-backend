@@ -7,7 +7,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ButtonsService {
-  constructor(@InjectRepository(ButtonsEntity) private readonly buttonsRepository: Repository<ButtonsEntity>){}
+  constructor(
+    @InjectRepository(ButtonsEntity)
+    private readonly buttonsRepository: Repository<ButtonsEntity>,
+  ) {}
 
   async create(createButtonsDto: CreateButtonsDto) {
     const button = await this.buttonsRepository.create(createButtonsDto);
@@ -16,32 +19,36 @@ export class ButtonsService {
 
   async findAll(): Promise<ButtonsEntity[]> {
     return await this.buttonsRepository.find({
-      order:{
-        createdAt: "ASC"
-      }
+      order: {
+        createdAt: 'ASC',
+      },
     });
   }
 
   async findOne(id: string): Promise<ButtonsEntity> {
-    const button = await this.buttonsRepository.findOne({where: {
-      id: id
-    }})
-    if(!button){
+    const button = await this.buttonsRepository.findOne({
+      where: {
+        id: id,
+      },
+    });
+    if (!button) {
       throw new NotFoundException();
     }
     return button;
   }
 
-
-  async update(id: string, updateButtonsDto: UpdateButtonsDto): Promise<ButtonsEntity> {
+  async update(
+    id: string,
+    updateButtonsDto: UpdateButtonsDto,
+  ): Promise<ButtonsEntity> {
     const button = await this.findOne(id);
-    Object.assign(button,updateButtonsDto) 
+    Object.assign(button, updateButtonsDto);
     return await this.buttonsRepository.save(button);
   }
-  
-  async remove(id: string): Promise<{status: boolean}> {
-      const button = await this.findOne(id)
-      await this.buttonsRepository.remove(button);
-      return {status: true};
+
+  async remove(id: string): Promise<{ status: boolean }> {
+    const button = await this.findOne(id);
+    await this.buttonsRepository.remove(button);
+    return { status: true };
   }
 }

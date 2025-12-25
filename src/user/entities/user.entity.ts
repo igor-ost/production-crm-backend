@@ -1,23 +1,34 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { UserRole } from "../dto/create-user.dto";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { UserRole } from '../dto/create-user.dto';
+import { JournalEntity } from 'src/journal/entities/journal.entity';
 
-@Entity({name: "users"})
+@Entity({ name: 'users' })
 export class UserEntity {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column({type:"varchar",length: 40})
-    login: string;
+  @Column({ type: 'varchar', length: 40 })
+  login: string;
 
-    @Column({select:false,type: "text"})
-    password: string;
+  @Column({ select: false, type: 'text' })
+  password: string;
 
-    @Column({type:"enum",enum:UserRole})
-    role:UserRole;
+  @Column({ type: 'enum', enum: UserRole })
+  role: UserRole;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @OneToMany(() => JournalEntity, (journal) => journal.user)
+  journal: JournalEntity[];
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
