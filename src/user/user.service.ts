@@ -59,6 +59,11 @@ export class UserService {
 
   async findAll(): Promise<UserEntity[]> {
     return await this.userRepository.find({
+      relations: {
+        journal: {
+          order: true
+        },
+      },
       order: {
         createdAt: 'ASC',
       },
