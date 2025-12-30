@@ -16,7 +16,7 @@ import { diskStorage } from 'multer';
 export class PhotosController {
   constructor(private readonly photosService: PhotosService) {}
 
-  @Post(':id')
+  @Post(':orderId')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
