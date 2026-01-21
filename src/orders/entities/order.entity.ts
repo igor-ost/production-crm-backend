@@ -60,6 +60,9 @@ export class OrderEntity {
   @Column({ type: 'text', nullable: true })
   notes: string;
 
+  @Column({type: "date", nullable: true})
+  deadline: Date;
+
   @CreateDateColumn()
   createdAt: Date;
 

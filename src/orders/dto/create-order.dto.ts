@@ -5,6 +5,7 @@ import {
   IsOptional,
   IsInt,
   Min,
+  IsDate,
 } from 'class-validator';
 
 export class CreateOrderDto {
@@ -34,7 +35,10 @@ export class CreateOrderDto {
 
   @IsInt()
   @Min(0)
-  buttons: number;
+  buttons?: number;
+
+  @IsDate()
+  deatline?: Date
 
   @IsOptional()
   @IsString()
