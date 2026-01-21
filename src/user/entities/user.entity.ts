@@ -3,11 +3,13 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { UserRole } from '../dto/create-user.dto';
 import { JournalEntity } from 'src/journal/entities/journal.entity';
+import { OrderStaffEntity } from 'src/order_staffs/entities/order_staff.entity';
 
 @Entity({ name: 'users' })
 export class UserEntity {
@@ -25,6 +27,9 @@ export class UserEntity {
 
   @OneToMany(() => JournalEntity, (journal) => journal.user)
   journal: JournalEntity[];
+
+  @OneToOne(() => OrderStaffEntity, (orderStaff) => orderStaff.order)
+  orders: OrderStaffEntity;
 
   @CreateDateColumn()
   createdAt: Date;

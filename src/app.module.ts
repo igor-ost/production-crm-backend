@@ -22,6 +22,7 @@ import { OrderMaterialsModule } from './order_materials/order_materials.module';
 import { JournalModule } from './journal/journal.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { OrderStaffsModule } from './order_staffs/order_staffs.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { join } from 'path';
       rootPath: join(__dirname, '..', 'uploads'),
       serveRoot: '/uploads',
     }),
+    OrderStaffsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

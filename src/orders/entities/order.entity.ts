@@ -1,6 +1,7 @@
 import { CustomerEntity } from 'src/customer/entities/customer.entity';
 import { JournalEntity } from 'src/journal/entities/journal.entity';
 import { OrderMaterialEntity } from 'src/order_materials/entities/order_material.entity';
+import { OrderStaffEntity } from 'src/order_staffs/entities/order_staff.entity';
 import { PhotoEntity } from 'src/photos/entities/photo.entity';
 import { TemplateEntity } from 'src/templates/entities/template.entity';
 import {
@@ -32,6 +33,9 @@ export class OrderEntity {
 
   @OneToMany(() => OrderMaterialEntity, (material) => material.order)
   materials: OrderMaterialEntity[];
+
+  @OneToMany(() => OrderStaffEntity, (staff) => staff.order)
+  staffs: OrderStaffEntity[];
 
   @OneToMany(() => PhotoEntity, (photo) => photo.order)
   photos: PhotoEntity[];

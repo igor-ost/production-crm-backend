@@ -63,6 +63,9 @@ export class OrdersService {
         template: true,
         materials: true,
         photos: true,
+        staffs: {
+          user: true
+        },
         journal: {
           user: true,
           order: true,
@@ -84,6 +87,9 @@ export class OrdersService {
         template: true,
         materials: true,
         photos: true,
+        staffs: {
+          user: true
+        },
         journal: {
           user: true,
           order: true,
