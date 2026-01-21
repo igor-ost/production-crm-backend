@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateOrderStaffDto } from './dto/create-order_staff.dto';
-import { UpdateOrderStaffDto } from './dto/update-order_staff.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { OrderStaffEntity } from './entities/order_staff.entity';
 import { Repository } from 'typeorm';
@@ -50,14 +49,6 @@ export class OrderStaffsService {
     return order_materials;
   }
 
-  async update(
-    id: string,
-    updateDto: UpdateOrderStaffDto,
-  ): Promise<OrderStaffEntity> {
-    const order_materials = await this.findOne(id);
-    Object.assign(order_materials, updateDto);
-    return await this.orderStaffRepository.save(order_materials);
-  }
 
   async remove(id: string): Promise<{ status: boolean }> {
     const order_materials = await this.findOne(id);
