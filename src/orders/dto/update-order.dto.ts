@@ -30,6 +30,6 @@ export class UpdateOrderDto extends PartialType(CreateOrderDto) {
   notes?: string | undefined;
 
   @IsOptional()
-  @IsDate()
-  deatline?: Date  | undefined;
+  @IsString()
+  deadline?: string  | undefined;
 }

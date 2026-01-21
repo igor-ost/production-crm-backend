@@ -37,7 +37,7 @@ export class CreateOrderDto {
   @Min(0)
   buttons?: number;
 
-  @IsDate()
+  @IsString()
   deatline?: Date
 
   @IsOptional()
