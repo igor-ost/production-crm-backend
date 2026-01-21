@@ -38,7 +38,7 @@ export class CreateOrderDto {
   buttons?: number;
 
   @IsString()
-  deatline?: string
+  deadline?: string
 
   @IsOptional()
   @IsString()
