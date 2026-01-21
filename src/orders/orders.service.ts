@@ -51,6 +51,7 @@ export class OrdersService {
       quantity: dto.quantity,
       buttons: dto.buttons,
       notes: dto.notes,
+      deadline: dto.deadline
     });
     return await this.orderRepository.save(order);
   }
