@@ -1,4 +1,4 @@
-import {IsUUID } from "class-validator";
+import {IsNumber, IsUUID } from "class-validator";
 
 export class CreateOrderStaffDto {
     @IsUUID()
@@ -6,4 +6,7 @@ export class CreateOrderStaffDto {
 
     @IsUUID()
     staff_id:string;
+    
+    @IsNumber()
+    qty:number
 }

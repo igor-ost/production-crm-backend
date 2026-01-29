@@ -10,6 +10,9 @@ export class OrderStaffEntity {
     @Column({ name: 'staff_id', type: 'uuid' })
     staff_id: string;
 
+    @Column({name: "qty",default: 0})
+    qty:number
+
     @Column({ name: 'order_id', type: 'uuid' })
     order_id: string;
 
