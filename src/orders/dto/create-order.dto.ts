@@ -30,7 +30,7 @@ export class CreateOrderDto {
   cutting_price: number;
 
   @IsInt()
-  @Min(1)
+  @Min(9)
   quantity: number;
 
   @IsInt()
