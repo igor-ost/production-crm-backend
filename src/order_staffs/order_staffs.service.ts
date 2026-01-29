@@ -15,12 +15,13 @@ export class OrderStaffsService {
       private readonly userService: UserService
   ) {}
   async create(dto: CreateOrderStaffDto) {
-    const { order_id, staff_id} = dto;
+    const { order_id, staff_id,qty} = dto;
     const order = await this.orderService.findOne(order_id);
     const user = await this.userService.findOne(staff_id);
     const item = this.orderStaffRepository.create({
       staff_id,
       order_id,
+      qty,
       order,
       user,
     });
