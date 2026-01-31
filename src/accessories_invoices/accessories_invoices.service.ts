@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AccessoriesInvoice } from './entities/accessories_invoice.entity';
 import { CreateAccessoriesInvoiceDto } from './dto/create-accessories_invoice.dto';
+import { AccessoriesService } from 'src/accessories/accessories.service';
 
 
 @Injectable()
@@ -10,10 +11,17 @@ export class AccessoriesInvoicesService {
   constructor(
     @InjectRepository(AccessoriesInvoice)
     private readonly accessoriesInvoicesRepository: Repository<AccessoriesInvoice>,
+    private readonly accessoriesService: AccessoriesService
   ) {}
 
   async create(dto: CreateAccessoriesInvoiceDto) {
-    const invoice = await this.accessoriesInvoicesRepository.create(dto);
+    const accessories = await this.accessoriesService.findOne(dto.material_id)
+    const data = {
+      accessories: accessories,
+      qty: dto.qty,
+      dateArrived: dto.dateArrived
+    }
+    const invoice = await this.accessoriesInvoicesRepository.create(data);
     return await this.accessoriesInvoicesRepository.save(invoice);
   }
 

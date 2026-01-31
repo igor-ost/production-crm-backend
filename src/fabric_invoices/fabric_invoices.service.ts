@@ -3,16 +3,24 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { FabricInvoices } from './entities/fabric_invoice.entity';
 import { CreateFabricInvoiceDto } from './dto/create-fabric_invoice.dto';
+import { FabricsService } from 'src/fabrics/fabrics.service';
 
 @Injectable()
 export class FabricInvoicesService {
   constructor(
     @InjectRepository(FabricInvoices)
     private readonly fabricInvoicesRepository: Repository<FabricInvoices>,
+    private readonly fabricService: FabricsService
   ) {}
 
   async create(dto: CreateFabricInvoiceDto) {
-    const invoice = await this.fabricInvoicesRepository.create(dto);
+    const fabric = await this.fabricService.findOne(dto.material_id)
+    const data = {
+      fabrics: fabric,
+      qty: dto.qty,
+      dateArrived: dto.dateArrived
+    }
+    const invoice = await this.fabricInvoicesRepository.create(data);
     return await this.fabricInvoicesRepository.save(invoice);
   }
 

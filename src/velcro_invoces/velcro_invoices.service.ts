@@ -14,9 +14,9 @@ export class VelcroInvoicesService {
   ) {}
 
   async create(dto: CreateVelcroInvoiceDto) {
-    const zipper = this.velcroService.findOne(dto.material_id)
+    const velcro = await this.velcroService.findOne(dto.material_id)
     const data = {
-      zipper_id: zipper,
+      velcro: velcro,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }

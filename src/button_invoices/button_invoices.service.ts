@@ -10,10 +10,17 @@ export class ButtonInvoicesService {
   constructor(
     @InjectRepository(ButtonInvoices)
     private readonly buttonInvoicesRepository: Repository<ButtonInvoices>,
+    private readonly buttonService
   ) {}
 
   async create(dto: CreateButtonInvoiceDto) {
-    const invoice = await this.buttonInvoicesRepository.create(dto);
+    const button = await this.buttonService.findOne(dto.material_id)
+    const data = {
+      buttons: button,
+      qty: dto.qty,
+      dateArrived: dto.dateArrived
+    }
+    const invoice = await this.buttonInvoicesRepository.create(data);
     return await this.buttonInvoicesRepository.save(invoice);
   }
 

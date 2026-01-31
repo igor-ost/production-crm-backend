@@ -3,16 +3,24 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ThreadInvoice } from './entities/thread_invoice.entity';
 import { CreateThreadInvoiceDto } from './dto/create-thread_invoice.dto';
+import { ThreadsService } from 'src/threads/threads.service';
 
 @Injectable()
 export class ThreadInvoicesService {
   constructor(
     @InjectRepository(ThreadInvoice)
     private readonly threadInvoicesRepository: Repository<ThreadInvoice>,
+    private readonly threadService: ThreadsService
   ) {}
 
   async create(dto: CreateThreadInvoiceDto) {
-    const invoice = await this.threadInvoicesRepository.create(dto);
+    const thread = await this.threadService.findOne(dto.material_id)
+    const data = {
+      threads: thread,
+      qty: dto.qty,
+      dateArrived: dto.dateArrived
+    }
+    const invoice = await this.threadInvoicesRepository.create(data);
     return await this.threadInvoicesRepository.save(invoice);
   }
 
