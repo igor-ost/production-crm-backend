@@ -11,7 +11,4 @@ export class UpdateAccessoriesDto extends PartialType(CreateAccessoriesDto) {
 
   @IsNumber()
   price?: number | undefined;
-
-  @IsNumber()
-  qty?: number | undefined;
 }

@@ -13,6 +13,4 @@ export class CreateThreadDto {
   @IsNumber()
   price: number;
 
-  @IsNumber()
-  qty: number;
 }

@@ -16,6 +16,4 @@ export class CreateFabricDto {
   @IsNumber()
   price: number;
 
-  @IsNumber()
-  qty: number;
 }

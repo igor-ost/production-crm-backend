@@ -13,6 +13,4 @@ export class CreateButtonsDto {
   @IsNumber()
   price: number;
 
-  @IsNumber()
-  qty: number;
 }

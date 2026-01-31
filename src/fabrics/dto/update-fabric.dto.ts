@@ -18,6 +18,4 @@ export class UpdateFabricDto extends PartialType(CreateFabricDto) {
   @IsNumber()
   price: number | undefined;
 
-  @IsNumber()
-  qty: number | undefined;
 }

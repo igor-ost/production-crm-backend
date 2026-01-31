@@ -9,7 +9,4 @@ export class CreateAccessoriesDto {
 
   @IsNumber()
   price: number;
-
-  @IsNumber()
-  qty: number;
 }

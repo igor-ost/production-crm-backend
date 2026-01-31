@@ -12,6 +12,4 @@ export class UpdateVelcroDto extends PartialType(CreateVelcroDto) {
   @IsNumber()
   price: number | undefined;
 
-  @IsNumber()
-  qty: number | undefined;
 }

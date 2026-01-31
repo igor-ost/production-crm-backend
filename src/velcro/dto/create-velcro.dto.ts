@@ -9,7 +9,4 @@ export class CreateVelcroDto {
 
   @IsNumber()
   price: number;
-
-  @IsNumber()
-  qty: number;
 }

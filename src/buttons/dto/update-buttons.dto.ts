@@ -15,6 +15,4 @@ export class UpdateButtonsDto extends PartialType(CreateButtonsDto) {
   @IsNumber()
   price?: number | undefined;
 
-  @IsNumber()
-  qty?: number | undefined;
 }

@@ -15,6 +15,4 @@ export class UpdateThreadDto extends PartialType(CreateThreadDto) {
   @IsNumber()
   price: number | undefined;
 
-  @IsNumber()
-  qty: number | undefined;
 }
