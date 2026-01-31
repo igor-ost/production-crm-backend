@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ButtonInvoices } from './entities/button_invoice.entity';
 import { CreateButtonInvoiceDto } from './dto/create-button_invoice.dto';
+import { ButtonsService } from 'src/buttons/buttons.service';
 
 
 @Injectable()
@@ -10,7 +11,7 @@ export class ButtonInvoicesService {
   constructor(
     @InjectRepository(ButtonInvoices)
     private readonly buttonInvoicesRepository: Repository<ButtonInvoices>,
-    private readonly buttonService
+    private readonly buttonService: ButtonsService
   ) {}
 
   async create(dto: CreateButtonInvoiceDto) {
