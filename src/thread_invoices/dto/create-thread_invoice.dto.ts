@@ -1,5 +1,5 @@
-import { Type } from "class-transformer";
-import { IsDate, IsNumber, IsUUID } from "class-validator";
+
+import { IsString, IsNumber, IsUUID } from "class-validator";
 
 export class CreateThreadInvoiceDto {
     @IsUUID()
@@ -8,7 +8,6 @@ export class CreateThreadInvoiceDto {
     @IsNumber()
     qty: number;
 
-    @IsDate()
-    @Type(() => Date)
-    dateArrived: Date
+    @IsString()
+    dateArrived: string
 }

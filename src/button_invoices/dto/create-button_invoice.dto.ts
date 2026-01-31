@@ -1,5 +1,4 @@
-import { Type } from "class-transformer";
-import { IsDate, IsNumber, IsUUID } from "class-validator";
+import { IsNumber, IsString, IsUUID } from "class-validator";
 
 export class CreateButtonInvoiceDto {
     @IsUUID()
@@ -8,7 +7,6 @@ export class CreateButtonInvoiceDto {
     @IsNumber()
     qty: number;
 
-    @IsDate()
-    @Type(() => Date)
-    dateArrived: Date
+    @IsString()
+    dateArrived: string
 }
