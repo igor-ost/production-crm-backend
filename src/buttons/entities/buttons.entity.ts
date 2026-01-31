@@ -1,7 +1,9 @@
+import { ButtonInvoices } from 'src/button_invoices/entities/button_invoice.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,8 +25,8 @@ export class ButtonsEntity {
   @Column({ type: 'int' })
   price: number;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @OneToMany(() => ButtonInvoices, (invoices) => invoices.button)
+  invoices: ButtonInvoices[]
 
   @CreateDateColumn()
   createdAt: Date;

@@ -1,7 +1,9 @@
+import { ThreadInvoice } from 'src/thread_invoices/entities/thread_invoice.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,8 +25,8 @@ export class ThreadEntity {
   @Column({ type: 'int' })
   price: number;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @OneToMany(() => ThreadInvoice, (invoices) => invoices.thread)
+  invoices: ThreadInvoice[]
 
   @CreateDateColumn()
   createdAt: Date;

@@ -22,6 +22,9 @@ export class ButtonsService {
       order: {
         createdAt: 'ASC',
       },
+      relations:{
+        invoices:true
+      }
     });
   }
 
@@ -30,6 +33,9 @@ export class ButtonsService {
       where: {
         id: id,
       },
+      relations:{
+        invoices:true
+      }
     });
     if (!button) {
       throw new NotFoundException();

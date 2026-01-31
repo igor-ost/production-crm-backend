@@ -1,7 +1,9 @@
+import { AccessoriesInvoice } from 'src/accessories_invoices/entities/accessories_invoice.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -20,8 +22,8 @@ export class AccessoriesEntity {
   @Column({ type: 'int' })
   price: number;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @OneToMany(() => AccessoriesInvoice, (invoices) => invoices.accessories)
+  invoices: AccessoriesInvoice[]
 
   @CreateDateColumn()
   createdAt: Date;

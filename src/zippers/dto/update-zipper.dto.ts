@@ -15,6 +15,4 @@ export class UpdateZipperDto extends PartialType(CreateZipperDto) {
   @IsNumber()
   price?: number | undefined;
 
-  @IsNumber()
-  qty?: number | undefined;
 }

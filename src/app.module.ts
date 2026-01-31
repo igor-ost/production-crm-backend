@@ -23,6 +23,12 @@ import { JournalModule } from './journal/journal.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { OrderStaffsModule } from './order_staffs/order_staffs.module';
+import { ZipperInvoicesModule } from './zipper_invoices/zipper_invoices.module';
+import { VelcroInvoicesModule } from './velcro_invoces/velcro_invoices.module';
+import { ThreadInvoicesModule } from './thread_invoices/thread_invoices.module';
+import { FabricInvoicesModule } from './fabric_invoices/fabric_invoices.module';
+import { ButtonInvoicesModule } from './button_invoices/button_invoices.module';
+import { AccessoriesInvoicesModule } from './accessories_invoices/accessories_invoices.module';
 
 @Module({
   imports: [
@@ -53,6 +59,12 @@ import { OrderStaffsModule } from './order_staffs/order_staffs.module';
       serveRoot: '/uploads',
     }),
     OrderStaffsModule,
+    ZipperInvoicesModule,
+    VelcroInvoicesModule,
+    ThreadInvoicesModule,
+    FabricInvoicesModule,
+    ButtonInvoicesModule,
+    AccessoriesInvoicesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

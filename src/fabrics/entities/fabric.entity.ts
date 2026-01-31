@@ -1,7 +1,9 @@
+import { FabricInvoices } from 'src/fabric_invoices/entities/fabric_invoice.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,8 +28,8 @@ export class FabricEntity {
   @Column({ type: 'int' })
   price: number;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @OneToMany(() => FabricInvoices, (invoices) => invoices.fabric)
+  invoices: FabricInvoices[]
 
   @CreateDateColumn()
   createdAt: Date;

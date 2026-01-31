@@ -22,6 +22,9 @@ export class ZippersService {
       order: {
         createdAt: 'ASC',
       },
+      relations: {
+        invoices: true
+      }
     });
   }
 
@@ -30,6 +33,9 @@ export class ZippersService {
       where: {
         id: id,
       },
+      relations: {
+        invoices: true
+      }
     });
     if (!zipper) {
       throw new NotFoundException();

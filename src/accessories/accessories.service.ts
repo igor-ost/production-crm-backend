@@ -22,6 +22,9 @@ export class AccessoriesService {
       order: {
         createdAt: 'ASC',
       },
+      relations:{
+        invoices:true
+      }
     });
   }
 
@@ -30,6 +33,9 @@ export class AccessoriesService {
       where: {
         id: id,
       },
+      relations:{
+        invoices:true
+      }
     });
     if (!accessories) {
       throw new NotFoundException();

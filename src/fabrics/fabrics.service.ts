@@ -22,6 +22,9 @@ export class FabricsService {
       order: {
         createdAt: 'ASC',
       },
+      relations:{
+        invoices:true
+      }
     });
   }
 
@@ -30,6 +33,9 @@ export class FabricsService {
       where: {
         id: id,
       },
+      relations:{
+        invoices:true
+      }
     });
     if (!fabric) {
       throw new NotFoundException();

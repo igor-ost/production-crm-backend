@@ -1,7 +1,9 @@
+import { VelcroInvoices } from 'src/velcro_invoces/entities/velcro_invoice.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -20,8 +22,8 @@ export class VelcroEntity {
   @Column({ type: 'int' })
   price: number;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @OneToMany(()=>VelcroInvoices, (invoces)=>invoces.velcro)
+  invoices: VelcroInvoices[]
 
   @CreateDateColumn()
   createdAt: Date;

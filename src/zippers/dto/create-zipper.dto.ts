@@ -12,7 +12,4 @@ export class CreateZipperDto {
 
   @IsNumber()
   price: number;
-
-  @IsNumber()
-  qty: number;
 }

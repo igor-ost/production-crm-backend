@@ -22,6 +22,9 @@ export class ThreadsService {
       order: {
         createdAt: 'ASC',
       },
+      relations:{
+        invoices: true
+      }
     });
   }
 
@@ -30,6 +33,9 @@ export class ThreadsService {
       where: {
         id: id,
       },
+      relations:{
+        invoices:true
+      }
     });
     if (!thread) {
       throw new NotFoundException();

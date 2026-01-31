@@ -1,7 +1,9 @@
+import { ZipperInvoices } from 'src/zipper_invoices/entities/zipper_invoice.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,8 +25,8 @@ export class ZipperEntity {
   @Column({ type: 'int' })
   price: number;
 
-  @Column({ type: 'int' })
-  qty: number;
+  @OneToMany(() => ZipperInvoices, (invoices) => invoices.zippers)
+  invoices: ZipperInvoices[]
 
   @CreateDateColumn()
   createdAt: Date;

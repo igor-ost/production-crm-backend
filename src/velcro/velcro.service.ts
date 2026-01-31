@@ -22,6 +22,9 @@ export class VelcroService {
       order: {
         createdAt: 'ASC',
       },
+      relations:{
+        invoices:true
+      }
     });
   }
 
@@ -30,6 +33,9 @@ export class VelcroService {
       where: {
         id: id,
       },
+      relations:{
+        invoices:true
+      }
     });
     if (!velcro) {
       throw new NotFoundException();
