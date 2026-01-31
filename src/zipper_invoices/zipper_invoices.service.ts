@@ -12,7 +12,12 @@ export class ZipperInvoicesService {
   ) {}
 
   async create(dto: CreateZipperInvoiceDto) {
-    const invoice = await this.zipperInvoicesRepository.create(dto);
+    const data = {
+      zipper_id: { id: dto.material_id},
+      qty: dto.qty,
+      dateArrived: dto.dateArrived
+    }
+    const invoice = await this.zipperInvoicesRepository.create(data);
     return await this.zipperInvoicesRepository.save(invoice);
   }
 
