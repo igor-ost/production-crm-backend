@@ -17,7 +17,7 @@ export class ZipperInvoices {
   @ManyToOne(() => ZipperEntity, (zipper) => zipper.invoices, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'zipper_id' })
   zippers: ZipperEntity;
 
   @Column({ type: 'varchar', length:40 })

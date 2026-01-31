@@ -17,7 +17,7 @@ export class VelcroInvoices {
   @ManyToOne(() => VelcroEntity, (velcro) => velcro.invoices, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'velcro_id' })
   velcro: VelcroEntity;
 
   @Column({ type: 'varchar', length:40 })

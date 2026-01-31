@@ -3,7 +3,7 @@ import { IsString, IsNumber, IsUUID } from "class-validator";
 
 export class CreateFabricInvoiceDto {
     @IsUUID()
-    id: string;
+    material_id: string;
     
     @IsNumber()
     qty: number;

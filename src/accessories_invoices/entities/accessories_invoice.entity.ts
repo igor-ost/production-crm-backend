@@ -17,10 +17,10 @@ export class AccessoriesInvoice {
   @ManyToOne(() => AccessoriesEntity, (accessories) => accessories.invoices, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'accessoriesId' })
   accessories: AccessoriesEntity;
 
-  @Column({ type: 'varchar', length:40 })
+  @Column({ type: 'varchar', length: 40 })
   dateArrived: string;
 
   @Column({ type: 'int' })

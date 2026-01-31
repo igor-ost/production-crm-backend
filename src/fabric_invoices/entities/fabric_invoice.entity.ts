@@ -17,7 +17,7 @@ export class FabricInvoices {
   @ManyToOne(() => FabricEntity, (fabric) => fabric.invoices, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'fabric_id' })
   fabric: FabricEntity;
 
   @Column({ type: 'varchar', length:40 })

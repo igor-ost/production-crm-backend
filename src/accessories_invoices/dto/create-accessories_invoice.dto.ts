@@ -1,14 +1,13 @@
-import { Type } from "class-transformer";
-import { IsDate, IsNumber, IsUUID } from "class-validator";
+
+import { IsNumber, IsString, IsUUID } from "class-validator";
 
 export class CreateAccessoriesInvoiceDto {
     @IsUUID()
-    id: string;
+    material_id: string;
         
     @IsNumber()
     qty: number;
     
-    @IsDate()
-    @Type(() => Date)
-    dateArrived: Date
+    @IsString()
+    dateArrived: string
 }

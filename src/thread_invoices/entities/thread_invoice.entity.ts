@@ -16,7 +16,7 @@ export class ThreadInvoice {
   @ManyToOne(() => ThreadEntity, (thread) => thread.invoices, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'thread_id' })
   thread: ThreadEntity;
 
   @Column({ type: 'varchar', length:40 })

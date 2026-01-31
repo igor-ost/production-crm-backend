@@ -18,7 +18,7 @@ export class ButtonInvoices {
   @ManyToOne(() => ButtonsEntity, (button) => button.invoices, {
     onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: 'id' })
+  @JoinColumn({ name: 'button_id' })
   button: ButtonsEntity;
 
   @Column({ type: 'varchar', length:40 })

@@ -2,7 +2,7 @@ import { IsNumber, IsString, IsUUID } from "class-validator";
 
 export class CreateButtonInvoiceDto {
     @IsUUID()
-    id: string;
+    material_id: string;
     
     @IsNumber()
     qty: number;
