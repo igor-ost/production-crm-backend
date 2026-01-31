@@ -17,7 +17,7 @@ export class ThreadInvoice {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'thread_id' })
-  threads: ThreadEntity;
+  thread: ThreadEntity;
 
   @Column({ type: 'varchar', length:40 })
   dateArrived: string;

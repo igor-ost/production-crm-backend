@@ -16,7 +16,7 @@ export class FabricInvoicesService {
   async create(dto: CreateFabricInvoiceDto) {
     const fabric = await this.fabricService.findOne(dto.material_id)
     const data = {
-      fabrics: fabric,
+      fabric: fabric,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }

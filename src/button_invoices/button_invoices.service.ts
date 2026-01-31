@@ -17,7 +17,7 @@ export class ButtonInvoicesService {
   async create(dto: CreateButtonInvoiceDto) {
     const button = await this.buttonService.findOne(dto.material_id)
     const data = {
-      buttons: button,
+      button: button,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }

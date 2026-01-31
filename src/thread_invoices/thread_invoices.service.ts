@@ -16,7 +16,7 @@ export class ThreadInvoicesService {
   async create(dto: CreateThreadInvoiceDto) {
     const thread = await this.threadService.findOne(dto.material_id)
     const data = {
-      threads: thread,
+      thread: thread,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }
