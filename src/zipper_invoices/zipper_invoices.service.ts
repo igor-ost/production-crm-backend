@@ -3,17 +3,20 @@ import { CreateZipperInvoiceDto } from './dto/create-zipper_invoice.dto';
 import { ZipperInvoices } from './entities/zipper_invoice.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { ZippersService } from 'src/zippers/zippers.service';
 
 @Injectable()
 export class ZipperInvoicesService {
   constructor(
     @InjectRepository(ZipperInvoices)
     private readonly zipperInvoicesRepository: Repository<ZipperInvoices>,
+    private readonly zipperService: ZippersService
   ) {}
 
   async create(dto: CreateZipperInvoiceDto) {
+    const zipper = this.zipperService.findOne(dto.material_id)
     const data = {
-      zipper_id: { id: dto.material_id},
+      zipper_id: zipper,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }
