@@ -20,8 +20,8 @@ export class ZipperInvoices {
   @JoinColumn({ name: 'id' })
   zippers: ZipperEntity;
 
-  @Column({ type: 'date' })
-  dateArrived: Date;
+  @Column({ type: 'varchar', length:40 })
+  dateArrived: string;
 
   @Column({ type: 'int' })
   qty: number;

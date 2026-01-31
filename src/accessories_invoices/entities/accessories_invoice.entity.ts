@@ -20,8 +20,8 @@ export class AccessoriesInvoice {
   @JoinColumn({ name: 'id' })
   accessories: AccessoriesEntity;
 
-  @Column({ type: 'date' })
-  dateArrived: Date;
+  @Column({ type: 'varchar', length:40 })
+  dateArrived: string;
 
   @Column({ type: 'int' })
   qty: number;

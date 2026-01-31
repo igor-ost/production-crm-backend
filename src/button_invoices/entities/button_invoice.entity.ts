@@ -21,8 +21,8 @@ export class ButtonInvoices {
   @JoinColumn({ name: 'id' })
   button: ButtonsEntity;
 
-  @Column({ type: 'date' })
-  dateArrived: Date;
+  @Column({ type: 'varchar', length:40 })
+  dateArrived: string;
 
   @Column({ type: 'int' })
   qty: number;
