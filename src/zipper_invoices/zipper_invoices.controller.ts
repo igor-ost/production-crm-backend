@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { ZipperInvoicesService } from './zipper_invoices.service';
 import { CreateZipperInvoiceDto } from './dto/create-zipper_invoice.dto';
 
-@Controller('zipper-invocies')
+@Controller('zipper-invoices')
 export class ZipperInvoicesController {
   constructor(private readonly zipperInvocesService: ZipperInvoicesService) {}
 

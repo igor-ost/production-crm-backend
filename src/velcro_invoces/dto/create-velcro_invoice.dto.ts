@@ -1,1 +1,12 @@
-export class CreateVelcroInvoiceDto {}
+import { IsDate, IsNumber, IsUUID } from "class-validator";
+
+export class CreateVelcroInvoiceDto {
+    @IsUUID()
+    id: string;
+    
+    @IsNumber()
+    qty: number;
+
+    @IsDate()
+    dateArrived: Date
+}

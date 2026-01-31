@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { VelcroInvoicesService } from './velcro_invoices.service';
 import { CreateVelcroInvoiceDto } from './dto/create-velcro_invoice.dto';
 
-@Controller('velcro-invoces')
+@Controller('velcro-invoices')
 export class VelcroInvoicesController {
   constructor(private readonly velcroInvocesService: VelcroInvoicesService) {}
 
