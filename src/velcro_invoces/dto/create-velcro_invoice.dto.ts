@@ -1,3 +1,4 @@
+import { Type } from "class-transformer";
 import { IsDate, IsNumber, IsUUID } from "class-validator";
 
 export class CreateVelcroInvoiceDto {
@@ -8,5 +9,6 @@ export class CreateVelcroInvoiceDto {
     qty: number;
 
     @IsDate()
+    @Type(() => Date)
     dateArrived: Date
 }
