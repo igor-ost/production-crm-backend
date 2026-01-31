@@ -14,9 +14,9 @@ export class ZipperInvoicesService {
   ) {}
 
   async create(dto: CreateZipperInvoiceDto) {
-    const zipper = this.zipperService.findOne(dto.material_id)
+    const zipper = await this.zipperService.findOne(dto.material_id)
     const data = {
-      zipper_id: zipper,
+      zippers: zipper,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }
