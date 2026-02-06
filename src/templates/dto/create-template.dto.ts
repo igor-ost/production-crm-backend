@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class CreateTemplateDto {
   @IsString()
@@ -6,4 +6,13 @@ export class CreateTemplateDto {
 
   @IsString()
   description: string;
+
+  @IsNumber()
+  cuttingPrice: number;
+
+  @IsNumber()
+  sewingPrice: number;
+
+  @IsNumber()
+  buttonsPrice: number;
 }

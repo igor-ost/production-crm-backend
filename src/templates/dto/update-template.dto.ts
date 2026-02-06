@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateTemplateDto } from './create-template.dto';
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class UpdateTemplateDto extends PartialType(CreateTemplateDto) {
   @IsString()
@@ -8,4 +8,13 @@ export class UpdateTemplateDto extends PartialType(CreateTemplateDto) {
 
   @IsString()
   description: string | undefined;
+
+  @IsNumber()
+  cuttingPrice: number | undefined;
+  
+  @IsNumber()
+  sewingPrice: number | undefined;
+  
+  @IsNumber()
+  buttonsPrice: number | undefined;
 }

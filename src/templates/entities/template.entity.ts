@@ -20,6 +20,15 @@ export class TemplateEntity {
   @Column({ type: 'text' })
   description: string;
 
+  @Column({ type: 'varchar',default: 0 })
+  cuttingPrice: number;
+
+  @Column({ type: 'varchar',default: 0 })
+  sewingPrice: number;
+
+  @Column({ type: 'varchar',default: 0 })
+  buttonsPrice: number;
+
   @OneToMany(() => TemplateItemEntity, (item) => item.template)
   materials: TemplateItemEntity[];
 
