@@ -19,9 +19,6 @@ export class FabricEntity {
   @Column({ type: 'varchar', length: 40 })
   color: string;
 
-  @Column({ type: 'varchar', length: 40 })
-  type: string;
-
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 

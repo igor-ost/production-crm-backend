@@ -10,9 +10,6 @@ export class UpdateFabricDto extends PartialType(CreateFabricDto) {
   color: string | undefined;
 
   @IsString()
-  type: string | undefined;
-
-  @IsString()
   unit: string | undefined;
 
   @IsNumber()

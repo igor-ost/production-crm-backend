@@ -8,9 +8,6 @@ export class CreateFabricDto {
   color: string;
 
   @IsString()
-  type: string;
-
-  @IsString()
   unit: string;
 
   @IsNumber()
