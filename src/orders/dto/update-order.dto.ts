@@ -17,6 +17,11 @@ export class UpdateOrderDto extends PartialType(CreateOrderDto) {
   @Min(0)
   cutting_price: number | undefined;
 
+  @IsNumber()
+  @Min(0)
+  buttonsPrice: number | undefined;
+
+
   @IsInt()
   @Min(1)
   quantity: number | undefined;

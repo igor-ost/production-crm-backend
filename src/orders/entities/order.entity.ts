@@ -55,6 +55,9 @@ export class OrderEntity {
   @Column('decimal')
   cutting_price: number;
 
+  @Column('decimal')
+  buttonsPrice: number;
+
   @Column()
   quantity: number;
 

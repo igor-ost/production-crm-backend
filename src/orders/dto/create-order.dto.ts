@@ -29,6 +29,11 @@ export class CreateOrderDto {
   @Min(0)
   cutting_price: number;
 
+  @IsNumber()
+  @Min(0)
+  buttonsPrice: number;
+
+
   @IsInt()
   @Min(0)
   quantity: number;
