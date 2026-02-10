@@ -29,6 +29,7 @@ import { ThreadInvoicesModule } from './thread_invoices/thread_invoices.module';
 import { FabricInvoicesModule } from './fabric_invoices/fabric_invoices.module';
 import { ButtonInvoicesModule } from './button_invoices/button_invoices.module';
 import { AccessoriesInvoicesModule } from './accessories_invoices/accessories_invoices.module';
+import { MaterialConsumptionsModule } from './material_consumptions/material_consumptions.module';
 
 @Module({
   imports: [
@@ -65,6 +66,7 @@ import { AccessoriesInvoicesModule } from './accessories_invoices/accessories_in
     FabricInvoicesModule,
     ButtonInvoicesModule,
     AccessoriesInvoicesModule,
+    MaterialConsumptionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
