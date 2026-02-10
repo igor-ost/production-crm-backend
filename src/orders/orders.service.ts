@@ -88,7 +88,8 @@ export class OrdersService {
         materials: true,
         photos: true,
         staffs: {
-          user: true
+          user: true,
+          order: false
         },
         journal: {
           user: true,
