@@ -18,6 +18,7 @@ export class ThreadInvoicesService {
     const data = {
       thread: thread,
       qty: dto.qty,
+      price: dto.price,
       dateArrived: dto.dateArrived
     }
     const invoice = await this.threadInvoicesRepository.create(data);

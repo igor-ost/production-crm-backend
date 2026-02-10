@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateFabricDto {
   @IsString()
@@ -10,7 +10,5 @@ export class CreateFabricDto {
   @IsString()
   unit: string;
 
-  @IsNumber()
-  price: number;
 
 }

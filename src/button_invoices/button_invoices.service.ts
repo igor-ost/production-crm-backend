@@ -19,7 +19,8 @@ export class ButtonInvoicesService {
     const data = {
       button: button,
       qty: dto.qty,
-      dateArrived: dto.dateArrived
+      dateArrived: dto.dateArrived,
+      price: dto.price
     }
     const invoice = await this.buttonInvoicesRepository.create(data);
     return await this.buttonInvoicesRepository.save(invoice);

@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateVelcroDto } from './create-velcro.dto';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class UpdateVelcroDto extends PartialType(CreateVelcroDto) {
   @IsString()
@@ -8,8 +8,5 @@ export class UpdateVelcroDto extends PartialType(CreateVelcroDto) {
 
   @IsString()
   unit: string | undefined;
-
-  @IsNumber()
-  price: number | undefined;
 
 }

@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateZipperDto {
   @IsString()
@@ -10,6 +10,4 @@ export class CreateZipperDto {
   @IsString()
   unit: string;
 
-  @IsNumber()
-  price: number;
 }

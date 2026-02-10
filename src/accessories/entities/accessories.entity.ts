@@ -19,9 +19,6 @@ export class AccessoriesEntity {
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 
-  @Column({ type: 'int' })
-  price: number;
-
   @OneToMany(() => AccessoriesInvoice, (invoices) => invoices.accessories)
   invoices: AccessoriesInvoice[]
 

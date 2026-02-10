@@ -10,4 +10,7 @@ export class CreateThreadInvoiceDto {
 
     @IsString()
     dateArrived: string
+
+    @IsNumber()
+    price:number
 }

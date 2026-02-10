@@ -1,5 +1,5 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 import { CreateAccessoriesDto } from './create-accessories.dto';
 
 export class UpdateAccessoriesDto extends PartialType(CreateAccessoriesDto) {
@@ -9,6 +9,4 @@ export class UpdateAccessoriesDto extends PartialType(CreateAccessoriesDto) {
   @IsString()
   unit?: string | undefined;
 
-  @IsNumber()
-  price?: number | undefined;
 }

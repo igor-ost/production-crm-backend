@@ -22,9 +22,6 @@ export class FabricEntity {
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 
-  @Column({ type: 'int' })
-  price: number;
-
   @OneToMany(() => FabricInvoices, (invoices) => invoices.fabric)
   invoices: FabricInvoices[]
 

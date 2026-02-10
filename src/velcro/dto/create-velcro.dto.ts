@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateVelcroDto {
   @IsString()
@@ -7,6 +7,4 @@ export class CreateVelcroDto {
   @IsString()
   unit: string;
 
-  @IsNumber()
-  price: number;
 }

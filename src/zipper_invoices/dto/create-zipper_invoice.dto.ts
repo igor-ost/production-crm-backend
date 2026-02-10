@@ -7,6 +7,9 @@ export class CreateZipperInvoiceDto {
     @IsNumber()
     qty: number;
 
+    @IsNumber()
+    price:number
+
     @IsString()
     dateArrived: string
 }

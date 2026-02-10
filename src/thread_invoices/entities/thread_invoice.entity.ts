@@ -25,6 +25,9 @@ export class ThreadInvoice {
   @Column({ type: 'int' })
   qty: number;
 
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  price: number;
+
   @CreateDateColumn()
   createdAt: Date;
 

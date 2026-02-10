@@ -22,9 +22,6 @@ export class ButtonsEntity {
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 
-  @Column({ type: 'int' })
-  price: number;
-
   @OneToMany(() => ButtonInvoices, (invoices) => invoices.button)
   invoices: ButtonInvoices[]
 

@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateZipperDto } from './create-zipper.dto';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class UpdateZipperDto extends PartialType(CreateZipperDto) {
   @IsString()
@@ -12,7 +12,5 @@ export class UpdateZipperDto extends PartialType(CreateZipperDto) {
   @IsString()
   unit?: string | undefined;
 
-  @IsNumber()
-  price?: number | undefined;
 
 }

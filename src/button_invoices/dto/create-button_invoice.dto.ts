@@ -9,4 +9,7 @@ export class CreateButtonInvoiceDto {
 
     @IsString()
     dateArrived: string
+
+    @IsNumber()
+    price:number
 }

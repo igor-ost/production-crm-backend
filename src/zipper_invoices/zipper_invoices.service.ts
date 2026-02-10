@@ -18,6 +18,7 @@ export class ZipperInvoicesService {
     const data = {
       zippers: zipper,
       qty: dto.qty,
+      price:  dto.price,
       dateArrived: dto.dateArrived
     }
     const invoice = await this.zipperInvoicesRepository.create(data);

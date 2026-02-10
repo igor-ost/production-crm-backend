@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateThreadDto } from './create-thread.dto';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class UpdateThreadDto extends PartialType(CreateThreadDto) {
   @IsString()
@@ -11,8 +11,5 @@ export class UpdateThreadDto extends PartialType(CreateThreadDto) {
 
   @IsString()
   unit: string | undefined;
-
-  @IsNumber()
-  price: number | undefined;
 
 }

@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateFabricDto } from './create-fabric.dto';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class UpdateFabricDto extends PartialType(CreateFabricDto) {
   @IsString()
@@ -11,8 +11,5 @@ export class UpdateFabricDto extends PartialType(CreateFabricDto) {
 
   @IsString()
   unit: string | undefined;
-
-  @IsNumber()
-  price: number | undefined;
 
 }

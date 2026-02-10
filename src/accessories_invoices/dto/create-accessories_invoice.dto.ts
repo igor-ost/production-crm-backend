@@ -10,4 +10,7 @@ export class CreateAccessoriesInvoiceDto {
     
     @IsString()
     dateArrived: string
+
+    @IsNumber()
+    price:number
 }

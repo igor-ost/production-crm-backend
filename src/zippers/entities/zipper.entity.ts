@@ -22,9 +22,6 @@ export class ZipperEntity {
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 
-  @Column({ type: 'int' })
-  price: number;
-
   @OneToMany(() => ZipperInvoices, (invoices) => invoices.zippers)
   invoices: ZipperInvoices[]
 

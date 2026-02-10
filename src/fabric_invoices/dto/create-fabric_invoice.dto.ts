@@ -10,4 +10,7 @@ export class CreateFabricInvoiceDto {
 
     @IsString()
     dateArrived: string
+
+    @IsNumber()
+    price:number
 }

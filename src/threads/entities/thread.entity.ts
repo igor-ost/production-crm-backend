@@ -22,9 +22,6 @@ export class ThreadEntity {
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 
-  @Column({ type: 'int' })
-  price: number;
-
   @OneToMany(() => ThreadInvoice, (invoices) => invoices.thread)
   invoices: ThreadInvoice[]
 

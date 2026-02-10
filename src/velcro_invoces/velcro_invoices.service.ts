@@ -18,6 +18,7 @@ export class VelcroInvoicesService {
     const data = {
       velcro: velcro,
       qty: dto.qty,
+      price: dto.price,
       dateArrived: dto.dateArrived
     }
     const invoice = await this.velcroInvoicesRepository.create(data);

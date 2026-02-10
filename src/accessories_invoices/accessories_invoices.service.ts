@@ -19,6 +19,7 @@ export class AccessoriesInvoicesService {
     const data = {
       accessories: accessories,
       qty: dto.qty,
+      price: dto.price,
       dateArrived: dto.dateArrived
     }
     const invoice = await this.accessoriesInvoicesRepository.create(data);

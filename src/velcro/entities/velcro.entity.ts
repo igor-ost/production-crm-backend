@@ -19,9 +19,6 @@ export class VelcroEntity {
   @Column({ type: 'varchar', length: 10 })
   unit: string;
 
-  @Column({ type: 'int' })
-  price: number;
-
   @OneToMany(()=>VelcroInvoices, (invoces)=>invoces.velcro)
   invoices: VelcroInvoices[]
 

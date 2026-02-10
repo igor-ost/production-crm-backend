@@ -9,4 +9,7 @@ export class CreateVelcroInvoiceDto {
 
     @IsString()
     dateArrived: string
+
+    @IsNumber()
+    price:number
 }
