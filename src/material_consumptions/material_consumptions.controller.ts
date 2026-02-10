@@ -16,6 +16,15 @@ export class MaterialConsumptionsController {
     return this.materialConsumptionsService.findAll();
   }
 
+  @Post(':id')
+    creat_many(
+      @Param('id') id: string,
+      @Body() dto: CreateMaterialConsumptionDto[],
+    ) {
+      return this.materialConsumptionsService.create_many(id, dto);
+    }
+  
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.materialConsumptionsService.findOne(id);
