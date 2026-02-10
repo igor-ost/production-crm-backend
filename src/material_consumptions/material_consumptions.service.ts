@@ -44,6 +44,9 @@ export class MaterialConsumptionsService {
       order: {
         createdAt: 'ASC',
       },
+      relations: {
+        order: true
+      }
     });
   }
 
@@ -52,6 +55,9 @@ export class MaterialConsumptionsService {
       where: {
         id: id,
       },
+      relations: {
+        order: true
+      }
     });
     if (!order_materials) {
       throw new NotFoundException();
