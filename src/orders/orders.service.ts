@@ -105,7 +105,17 @@ export class OrdersService {
 
   async update(id: string, updateDto: UpdateOrderDto): Promise<OrderEntity> {
     const order = await this.findOne(id);
+
     Object.assign(order, updateDto);
+
+    if (updateDto.customer_id) {
+      order.customer = await this.customerService.findOne(updateDto.customer_id,);
+    }
+
+    if (updateDto.template_id) {
+      order.template = await this.templateService.findOne(updateDto.template_id);
+    }
+
     return await this.orderRepository.save(order);
   }
 
