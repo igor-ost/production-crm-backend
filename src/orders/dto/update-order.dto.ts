@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateOrderDto } from './create-order.dto';
-import { IsDate, IsInt, IsNumber, IsOptional, IsString, Min } from 'class-validator';
+import { IsInt, IsNumber, IsOptional, IsString, IsUUID, Min } from 'class-validator';
 
 export class UpdateOrderDto extends PartialType(CreateOrderDto) {
   @IsString()
@@ -12,6 +12,12 @@ export class UpdateOrderDto extends PartialType(CreateOrderDto) {
   @IsNumber()
   @Min(0)
   sewing_price: number | undefined;
+
+  @IsUUID()
+  customer_id: string  | undefined;
+
+  @IsUUID()
+  template_id: string  | undefined;
 
   @IsNumber()
   @Min(0)
