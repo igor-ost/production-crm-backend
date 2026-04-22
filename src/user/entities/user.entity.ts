@@ -28,8 +28,8 @@ export class UserEntity {
   @OneToMany(() => JournalEntity, (journal) => journal.user)
   journal?: JournalEntity[];
 
-  @OneToOne(() => OrderStaffEntity, (orderStaff) => orderStaff.order)
-  orders?: OrderStaffEntity;
+  @OneToMany(() => OrderStaffEntity, (orderStaff) => orderStaff.user)
+  orderStaffs: OrderStaffEntity[];
 
   @CreateDateColumn()
   createdAt: Date;

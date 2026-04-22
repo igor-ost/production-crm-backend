@@ -16,8 +16,10 @@ export class OrderStaffEntity {
     @Column({ name: 'order_id', type: 'uuid' })
     order_id: string;
 
-    @OneToOne(()=>UserEntity, (user)=>user.orders)
-    @JoinColumn({ name: 'id' })
+    @ManyToOne(() => UserEntity, (user) => user.orderStaffs, {
+        onDelete: 'CASCADE',
+    })
+    @JoinColumn({ name: 'staff_id' })
     user: UserEntity;
 
     @ManyToOne(() => OrderEntity, (order) => order.staffs, {

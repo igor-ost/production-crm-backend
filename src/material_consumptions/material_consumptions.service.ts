@@ -64,11 +64,47 @@ export class MaterialConsumptionsService {
     }
     return order_materials;
   }
-
-
+  
   async remove(id: string): Promise<{ status: boolean }> {
     const order_materials = await this.findOne(id);
     await this.materialConsumptionRepository.remove(order_materials);
+    return { status: true };
+  }
+
+
+  async removePost(dto: {order_id:string,material_id:string}): Promise<{ status: boolean }> {
+	const item = await this.materialConsumptionRepository.findOne({
+	  where: {
+		order: {
+		  id: dto.order_id
+		},
+		material_id: dto.material_id
+	  }
+	});
+	console.log(item)
+    if (!item) {
+      throw new NotFoundException();
+    }
+    await this.materialConsumptionRepository.remove(item);
+    return { status: true };
+  }
+  
+  async update(dto: {order_id:string,material_id:string,qty:number}): Promise<{ status: boolean }> {
+	const item = await this.materialConsumptionRepository.findOne({
+	  where: {
+		order: {
+		  id: dto.order_id
+		},
+		material_id: dto.material_id
+	  }
+	});
+
+    if (!item) {
+      throw new NotFoundException();
+    }
+	item.qty = dto.qty
+	
+    await this.materialConsumptionRepository.save(item);
     return { status: true };
   }
 }
