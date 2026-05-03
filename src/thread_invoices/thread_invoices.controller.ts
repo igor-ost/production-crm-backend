@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch } from '@nestjs/common';
 import { ThreadInvoicesService } from './thread_invoices.service';
 import { CreateThreadInvoiceDto } from './dto/create-thread_invoice.dto';
+import { UpdateThreadInvoiceDto } from './dto/update-thread_invoice.dto';
 
 @Controller('thread-invoices')
 export class ThreadInvoicesController {
@@ -19,6 +20,11 @@ export class ThreadInvoicesController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.threadInvoicesService.findOne(id);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateDto: UpdateThreadInvoiceDto) {
+    return this.threadInvoicesService.update(id, updateDto);
   }
 
 

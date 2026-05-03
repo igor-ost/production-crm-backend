@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch } from '@nestjs/common';
 import { VelcroInvoicesService } from './velcro_invoices.service';
 import { CreateVelcroInvoiceDto } from './dto/create-velcro_invoice.dto';
+import { UpdateVelcroInvoiceDto } from './dto/update-velcro_invoice.dto';
 
 @Controller('velcro-invoices')
 export class VelcroInvoicesController {
@@ -21,6 +22,10 @@ export class VelcroInvoicesController {
     return this.velcroInvocesService.findOne(id);
   }
 
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateDto: UpdateVelcroInvoiceDto) {
+    return this.velcroInvocesService.update(id, updateDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

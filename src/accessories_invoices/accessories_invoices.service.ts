@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { AccessoriesInvoice } from './entities/accessories_invoice.entity';
 import { CreateAccessoriesInvoiceDto } from './dto/create-accessories_invoice.dto';
 import { AccessoriesService } from 'src/accessories/accessories.service';
+import { UpdateAccessoiresInvoiceDto } from './dto/update-accessories_invoice.dto';
 
 
 @Injectable()
@@ -12,7 +13,7 @@ export class AccessoriesInvoicesService {
     @InjectRepository(AccessoriesInvoice)
     private readonly accessoriesInvoicesRepository: Repository<AccessoriesInvoice>,
     private readonly accessoriesService: AccessoriesService
-  ) {}
+  ) { }
 
   async create(dto: CreateAccessoriesInvoiceDto) {
     const accessories = await this.accessoriesService.findOne(dto.material_id)
@@ -46,6 +47,14 @@ export class AccessoriesInvoicesService {
     return invoice;
   }
 
+  async update(
+    id: string,
+    updateDto: UpdateAccessoiresInvoiceDto,
+  ): Promise<AccessoriesInvoice> {
+    const invoice = await this.findOne(id);
+    Object.assign(invoice, updateDto);
+    return await this.accessoriesInvoicesRepository.save(invoice);
+  }
 
   async remove(id: string): Promise<{ status: boolean }> {
     const invoice = await this.findOne(id);

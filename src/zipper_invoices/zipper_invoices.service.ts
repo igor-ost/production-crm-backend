@@ -4,6 +4,7 @@ import { ZipperInvoices } from './entities/zipper_invoice.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ZippersService } from 'src/zippers/zippers.service';
+import { UpdateZipperInvoiceDto } from './dto/update-zipper_invoice.dto';
 
 @Injectable()
 export class ZipperInvoicesService {
@@ -11,14 +12,14 @@ export class ZipperInvoicesService {
     @InjectRepository(ZipperInvoices)
     private readonly zipperInvoicesRepository: Repository<ZipperInvoices>,
     private readonly zipperService: ZippersService
-  ) {}
+  ) { }
 
   async create(dto: CreateZipperInvoiceDto) {
     const zipper = await this.zipperService.findOne(dto.material_id)
     const data = {
       zippers: zipper,
       qty: dto.qty,
-      price:  dto.price,
+      price: dto.price,
       dateArrived: dto.dateArrived
     }
     const invoice = await this.zipperInvoicesRepository.create(data);
@@ -45,6 +46,14 @@ export class ZipperInvoicesService {
     return invoice;
   }
 
+  async update(
+    id: string,
+    updateZipperDto: UpdateZipperInvoiceDto,
+  ): Promise<ZipperInvoices> {
+    const zipper = await this.findOne(id);
+    Object.assign(zipper, updateZipperDto);
+    return await this.zipperInvoicesRepository.save(zipper);
+  }
 
   async remove(id: string): Promise<{ status: boolean }> {
     const invoice = await this.findOne(id);

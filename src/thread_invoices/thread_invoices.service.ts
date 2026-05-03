@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { ThreadInvoice } from './entities/thread_invoice.entity';
 import { CreateThreadInvoiceDto } from './dto/create-thread_invoice.dto';
 import { ThreadsService } from 'src/threads/threads.service';
+import { UpdateThreadInvoiceDto } from './dto/update-thread_invoice.dto';
 
 @Injectable()
 export class ThreadInvoicesService {
@@ -43,6 +44,15 @@ export class ThreadInvoicesService {
       throw new NotFoundException();
     }
     return invoice;
+  }
+
+  async update(
+    id: string,
+    updateDto: UpdateThreadInvoiceDto,
+  ): Promise<ThreadInvoice> {
+    const invoice = await this.findOne(id);
+    Object.assign(invoice, updateDto);
+    return await this.threadInvoicesRepository.save(invoice);
   }
 
 

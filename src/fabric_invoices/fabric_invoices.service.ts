@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { FabricInvoices } from './entities/fabric_invoice.entity';
 import { CreateFabricInvoiceDto } from './dto/create-fabric_invoice.dto';
 import { FabricsService } from 'src/fabrics/fabrics.service';
+import { UpdateFabricInvoiceDto } from './dto/update-fabric_invoice.dto';
 
 @Injectable()
 export class FabricInvoicesService {
@@ -11,13 +12,13 @@ export class FabricInvoicesService {
     @InjectRepository(FabricInvoices)
     private readonly fabricInvoicesRepository: Repository<FabricInvoices>,
     private readonly fabricService: FabricsService
-  ) {}
+  ) { }
 
   async create(dto: CreateFabricInvoiceDto) {
     const fabric = await this.fabricService.findOne(dto.material_id)
     const data = {
       fabric: fabric,
-      price:dto.price,
+      price: dto.price,
       qty: dto.qty,
       dateArrived: dto.dateArrived
     }
@@ -45,6 +46,14 @@ export class FabricInvoicesService {
     return invoice;
   }
 
+  async update(
+    id: string,
+    updateDto: UpdateFabricInvoiceDto,
+  ): Promise<FabricInvoices> {
+    const invoice = await this.findOne(id);
+    Object.assign(invoice, updateDto);
+    return await this.fabricInvoicesRepository.save(invoice);
+  }
 
   async remove(id: string): Promise<{ status: boolean }> {
     const invoice = await this.findOne(id);

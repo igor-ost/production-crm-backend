@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch } from '@nestjs/common';
 import { ZipperInvoicesService } from './zipper_invoices.service';
 import { CreateZipperInvoiceDto } from './dto/create-zipper_invoice.dto';
+import { UpdateZipperInvoiceDto } from './dto/update-zipper_invoice.dto';
 
 @Controller('zipper-invoices')
 export class ZipperInvoicesController {
@@ -19,6 +20,11 @@ export class ZipperInvoicesController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.zipperInvocesService.findOne(id);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateZipperDto: UpdateZipperInvoiceDto) {
+    return this.zipperInvocesService.update(id, updateZipperDto);
   }
 
   @Delete(':id')

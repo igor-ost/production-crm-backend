@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { ButtonInvoices } from './entities/button_invoice.entity';
 import { CreateButtonInvoiceDto } from './dto/create-button_invoice.dto';
 import { ButtonsService } from 'src/buttons/buttons.service';
+import { UpdateButtonInvoiceDto } from './dto/update-button_invoice.dto';
 
 
 @Injectable()
@@ -47,6 +48,14 @@ export class ButtonInvoicesService {
   }
 
 
+  async update(
+    id: string,
+    updateDto: UpdateButtonInvoiceDto,
+  ): Promise<ButtonInvoices> {
+    const invoice = await this.findOne(id);
+    Object.assign(invoice, updateDto);
+    return await this.buttonInvoicesRepository.save(invoice);
+  }
   async remove(id: string): Promise<{ status: boolean }> {
     const invoice = await this.findOne(id);
     await this.buttonInvoicesRepository.remove(invoice);

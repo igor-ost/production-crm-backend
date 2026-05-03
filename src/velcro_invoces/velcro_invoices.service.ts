@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { VelcroInvoices } from './entities/velcro_invoice.entity';
 import { CreateVelcroInvoiceDto } from './dto/create-velcro_invoice.dto';
 import { VelcroService } from 'src/velcro/velcro.service';
+import { UpdateVelcroInvoiceDto } from './dto/update-velcro_invoice.dto';
 
 @Injectable()
 export class VelcroInvoicesService {
@@ -45,6 +46,14 @@ export class VelcroInvoicesService {
     return invoice;
   }
 
+  async update(
+    id: string,
+    updateDto: UpdateVelcroInvoiceDto,
+  ): Promise<VelcroInvoices> {
+    const invoice = await this.findOne(id);
+    Object.assign(invoice, updateDto);
+    return await this.velcroInvoicesRepository.save(invoice);
+  }
 
   async remove(id: string): Promise<{ status: boolean }> {
     const invoice = await this.findOne(id);
